@@ -1,0 +1,48 @@
+/* Mini Calendar Styles */
+.mini-calendar {
+  background: var(--color-surface);
+  border-radius: 0.75rem;
+  padding: 1rem;
+}
+
+.mini-date-btn {
+  @apply w-8 h-8 text-xs rounded-full flex items-center justify-center transition-colors duration-200;
+  color: var(--color-text-primary);
+}
+
+.mini-date-btn:hover {
+  background-color: var(--color-primary);
+  color: #000000;
+}
+
+.mini-date-btn.today {
+  background-color: var(--color-primary);
+  color: #000000;
+  font-weight: 600;
+}
+
+.mini-date-btn.selected {
+  background-color: var(--color-secondary);
+  color: #000000;
+  font-weight: 600;
+}
+
+.mini-date-btn.today.selected {
+  background-color: var(--color-primary);
+  color: #000000;
+  font-weight: bold;
+  box-shadow: 0 0 0 2px var(--color-secondary);
+}
+
+.mini-date-btn.other-month {
+  color: var(--color-text-muted);
+}
+
+.mini-date-btn.other-month:hover {
+  color: var(--color-text-primary);
+}
+
+.mini-date-btn.other-month.selected {
+  background-color: rgba(92, 255, 228, 0.5);
+  color: #000000;
+} 

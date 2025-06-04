@@ -1,0 +1,160 @@
+<!-- Participants Section -->
+<div class="space-y-3">
+  <!-- Section Header -->
+  <div 
+    *ngIf="collapsible"
+    class="collapsible-section-header flex items-center justify-between p-3 rounded-lg cursor-pointer"
+    (click)="toggleExpanded()">
+    <div class="flex items-center space-x-3">
+      <div class="w-8 h-8 bg-purple-500/10 rounded-full flex items-center justify-center">
+        <svg class="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20">
+          <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+        </svg>
+      </div>
+      <div>
+        <h3 class="text-themed-primary font-medium">Participants</h3>
+        <p class="text-xs text-themed-muted">
+          {{ getSelectedCount() }} selected
+        </p>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2">
+      <!-- Selected count badge -->
+      <span *ngIf="getSelectedCount() > 0" 
+            class="bg-purple-500 text-white text-xs px-2 py-1 rounded-full font-medium">
+        {{ getSelectedCount() }}
+      </span>
+      <!-- Chevron -->
+      <svg class="w-5 h-5 text-themed-muted transition-transform duration-200"
+           [class.rotate-180]="expanded"
+           fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Non-collapsible header -->
+  <div *ngIf="!collapsible" class="mb-4">
+    <h3 class="text-themed-primary font-medium mb-1">Participants</h3>
+    <p class="text-xs text-themed-muted">
+      {{ getSelectedCount() }} selected
+    </p>
+  </div>
+
+  <!-- Content -->
+  <div *ngIf="expanded || !collapsible" class="collapsible-section-content space-y-4">
+    
+    <!-- Search Box -->
+    <div class="relative">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        (input)="onSearchChange()"
+        placeholder="Search participants..."
+        class="w-full bg-themed-surface border border-themed rounded-lg px-4 py-2 pl-10 pr-10 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+      
+      <!-- Search Icon -->
+      <div class="absolute left-3 top-1/2 transform -translate-y-1/2">
+        <svg class="w-4 h-4 text-themed-muted" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+        </svg>
+      </div>
+      
+      <!-- Clear Search -->
+      <button
+        *ngIf="searchQuery"
+        type="button"
+        (click)="clearSearch()"
+        class="absolute right-3 top-1/2 transform -translate-y-1/2 text-themed-muted hover:text-themed-primary">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Selected Participants -->
+    <div *ngIf="getSelectedCount() > 0">
+      <h4 class="text-sm font-medium text-themed-primary mb-2">Selected Participants</h4>
+      <div class="space-y-2">
+        <div *ngFor="let participant of getSelectedParticipants()" 
+             class="flex items-center justify-between p-3 bg-purple-50 border border-purple-200 rounded-lg dark:bg-purple-900/20 dark:border-purple-800/30">
+          <div class="flex items-center space-x-3">
+            <!-- Avatar -->
+            <img 
+              [src]="participant.avatar" 
+              [alt]="participant.name"
+              class="w-8 h-8 rounded-full object-cover">
+            
+            <!-- Info -->
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="font-medium text-themed-primary text-sm">{{ participant.name }}</span>
+                <span [class]="getParticipantStatusColor(participant.status)" class="text-xs">
+                  {{ getParticipantStatusIcon(participant.status) }}
+                </span>
+              </div>
+              <div class="text-xs text-themed-muted">{{ participant.role }} • {{ participant.department }}</div>
+            </div>
+          </div>
+          
+          <!-- Remove Button -->
+          <button
+            type="button"
+            (click)="removeParticipant(participant.id)"
+            class="text-red-500 hover:text-red-700 hover:bg-red-50 p-1 rounded transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Available Participants -->
+    <div>
+      <h4 class="text-sm font-medium text-themed-primary mb-2">Available Participants</h4>
+      <div class="max-h-64 overflow-y-auto space-y-2">
+        <div *ngFor="let participant of filteredParticipants" 
+             [class.opacity-50]="isParticipantSelected(participant.id)"
+             class="flex items-center justify-between p-3 bg-themed-surface border border-themed rounded-lg hover:bg-themed-hover transition-colors">
+          <div class="flex items-center space-x-3">
+            <!-- Avatar -->
+            <img 
+              [src]="participant.avatar" 
+              [alt]="participant.name"
+              class="w-8 h-8 rounded-full object-cover">
+            
+            <!-- Info -->
+            <div>
+              <div class="flex items-center space-x-2">
+                <span class="font-medium text-themed-primary text-sm">{{ participant.name }}</span>
+                <span [class]="getParticipantStatusColor(participant.status)" class="text-xs">
+                  {{ getParticipantStatusIcon(participant.status) }}
+                </span>
+              </div>
+              <div class="text-xs text-themed-muted">{{ participant.role }} • {{ participant.department }}</div>
+              <div class="text-xs text-themed-muted">{{ participant.email }}</div>
+            </div>
+          </div>
+          
+          <!-- Add/Remove Button -->
+          <button
+            type="button"
+            [disabled]="isParticipantSelected(participant.id)"
+            (click)="addParticipant(participant.id)"
+            class="bg-purple-500 hover:bg-purple-600 disabled:bg-gray-300 disabled:cursor-not-allowed text-white px-3 py-1 rounded-lg text-sm font-medium transition-colors">
+            {{ isParticipantSelected(participant.id) ? 'Added' : 'Add' }}
+          </button>
+        </div>
+        
+        <!-- No participants found -->
+        <div *ngIf="filteredParticipants.length === 0" class="text-center py-8 text-themed-muted">
+          <svg class="w-12 h-12 mx-auto mb-2 opacity-50" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"></path>
+          </svg>
+          <p class="text-sm">{{ searchQuery ? 'No participants found' : 'No participants available' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

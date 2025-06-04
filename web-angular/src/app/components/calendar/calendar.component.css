@@ -1,0 +1,1008 @@
+/* Host styles */
+:host {
+  display: block;
+  height: 100vh;
+}
+
+/* Performance optimization for category list */
+.category-list-item {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+.category-delete-btn {
+  transform: translateZ(0);
+  will-change: opacity;
+  transition: opacity 0.2s ease;
+}
+
+.category-delete-btn:hover {
+  transform: translateZ(0);
+}
+
+/* FullCalendar Dark Mode Border Customization */
+.dark-theme .calendar-container :global(.fc) {
+  border-color: rgba(75, 85, 99, 0.6) !important;
+}
+
+/* Main calendar grid borders in dark mode */
+.dark-theme .calendar-container :global(.fc-scrollgrid) {
+  border-color: rgba(75, 85, 99, 0.6) !important;
+}
+
+.dark-theme .calendar-container :global(.fc-scrollgrid-section) {
+  border-color: rgba(75, 85, 99, 0.6) !important;
+}
+
+/* Column header borders (weekday names) */
+.dark-theme .calendar-container :global(.fc-col-header-cell) {
+  border-color: rgba(75, 85, 99, 0.6) !important;
+  border-right: 1px solid rgba(75, 85, 99, 0.6) !important;
+  border-bottom: 1px solid rgba(75, 85, 99, 0.6) !important;
+}
+
+/* Day grid cell borders */
+.dark-theme .calendar-container :global(.fc-daygrid-day) {
+  border-color: rgba(75, 85, 99, 0.6) !important;
+  border-right: 1px solid rgba(75, 85, 99, 0.6) !important;
+  border-bottom: 1px solid rgba(75, 85, 99, 0.6) !important;
+  border-top: 1px solid rgba(75, 85, 99, 0.6) !important;
+  border-left: 1px solid rgba(75, 85, 99, 0.6) !important;
+}
+
+/* Time grid slots for week/day view */
+.dark-theme .calendar-container :global(.fc-timegrid-slot) {
+  border-color: rgba(75, 85, 99, 0.6) !important;
+  border-top: 1px solid rgba(75, 85, 99, 0.6) !important;
+}
+
+/* Time grid columns */
+.dark-theme .calendar-container :global(.fc-timegrid-col) {
+  border-color: rgba(75, 85, 99, 0.6) !important;
+  border-left: 1px solid rgba(75, 85, 99, 0.6) !important;
+  border-right: 1px solid rgba(75, 85, 99, 0.6) !important;
+}
+
+/* Time axis (time labels on left) */
+.dark-theme .calendar-container :global(.fc-timegrid-axis) {
+  border-color: rgba(75, 85, 99, 0.6) !important;
+  border-right: 1px solid rgba(75, 85, 99, 0.6) !important;
+}
+
+/* All other calendar elements - universal override for dark mode */
+.dark-theme .calendar-container :global(.fc-scrollgrid-section > *),
+.dark-theme .calendar-container :global(.fc-scrollgrid-section table),
+.dark-theme .calendar-container :global(.fc-scrollgrid-section tbody),
+.dark-theme .calendar-container :global(.fc-scrollgrid-section thead),
+.dark-theme .calendar-container :global(.fc-scrollgrid-section tr),
+.dark-theme .calendar-container :global(.fc-scrollgrid-section td),
+.dark-theme .calendar-container :global(.fc-scrollgrid-section th),
+.dark-theme .calendar-container :global(.fc-daygrid-body),
+.dark-theme .calendar-container :global(.fc-daygrid-event-harness),
+.dark-theme .calendar-container :global(.fc-timegrid-body),
+.dark-theme .calendar-container :global(.fc-timegrid-divider) {
+  border-color: rgba(75, 85, 99, 0.6) !important;
+}
+
+/* Light mode - keep subtle borders */
+.light-theme .calendar-container :global(.fc-scrollgrid),
+.light-theme .calendar-container :global(.fc-scrollgrid-section),
+.light-theme .calendar-container :global(.fc-col-header-cell),
+.light-theme .calendar-container :global(.fc-daygrid-day),
+.light-theme .calendar-container :global(.fc-timegrid-slot),
+.light-theme .calendar-container :global(.fc-timegrid-col),
+.light-theme .calendar-container :global(.fc-timegrid-axis) {
+  border-color: rgba(229, 231, 235, 0.8) !important;
+}
+
+/* Mini Calendar Styles */
+.mini-date-btn {
+  @apply w-8 h-8 text-xs rounded-full flex items-center justify-center transition-colors duration-200;
+  color: var(--color-text-primary);
+}
+
+.mini-date-btn:hover {
+  background-color: var(--color-primary);
+  color: #000000;
+}
+
+.mini-date-btn.today {
+  background-color: var(--color-primary);
+  color: #000000;
+  font-weight: 600;
+}
+
+.mini-date-btn.selected {
+  background-color: var(--color-secondary);
+  color: #000000;
+  font-weight: 600;
+}
+
+.mini-date-btn.today.selected {
+  background-color: var(--color-primary);
+  color: #000000;
+  font-weight: bold;
+  box-shadow: 0 0 0 2px var(--color-secondary);
+}
+
+.mini-date-btn.other-month {
+  color: var(--color-text-muted);
+}
+
+.mini-date-btn.other-month:hover {
+  color: var(--color-text-primary);
+}
+
+.mini-date-btn.other-month.selected {
+  background-color: rgba(92, 255, 228, 0.5);
+  color: #000000;
+}
+
+/* View Toggle Active State */
+.active {
+  background-color: var(--color-primary);
+  color: #000000;
+}
+
+/* Calendar Container Styles */
+.calendar-container {
+  height: 100%;
+}
+
+/* FullCalendar Custom Styles */
+.calendar-container :global(.fc) {
+  font-family: inherit;
+  height: 100% !important;
+  background: var(--color-calendar-day);
+  color: var(--color-text-primary);
+}
+
+/* Calendar Header (hidden since we use custom) */
+.calendar-container :global(.fc-header-toolbar) {
+  display: none;
+}
+
+/* Day Header */
+.calendar-container :global(.fc-col-header-cell) {
+  background: var(--color-calendar-header);
+  padding: 12px 8px;
+}
+
+.calendar-container :global(.fc-col-header-cell-cushion) {
+  color: var(--color-text-primary);
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Calendar Days */
+.calendar-container :global(.fc-daygrid-day) {
+  background: var(--color-calendar-day);
+  min-height: 120px;
+}
+
+.calendar-container :global(.fc-daygrid-day:hover) {
+  background: var(--color-calendar-day-hover);
+}
+
+.calendar-container :global(.fc-daygrid-day-number) {
+  color: var(--color-text-primary);
+  font-size: 14px;
+  font-weight: 400;
+  padding: 8px;
+  text-decoration: none;
+}
+
+/* Today's date */
+.calendar-container :global(.fc-day-today) {
+  background: var(--color-calendar-today-bg) !important;
+}
+
+.calendar-container :global(.fc-day-today .fc-daygrid-day-number) {
+  background: var(--color-primary);
+  color: #000000;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* Selected date in main calendar */
+.calendar-container :global(.fc-day-selected) {
+  background: rgba(92, 255, 228, 0.2) !important;
+}
+
+/* Events */
+.calendar-container :global(.fc-event) {
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 12px;
+  padding: 2px 6px;
+  margin: 1px 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.calendar-container :global(.fc-event:hover) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  transition: all 0.2s ease;
+}
+
+.calendar-container :global(.fc-event-title) {
+  font-weight: 500;
+}
+
+/* Week/Day View Time Grid */
+.calendar-container :global(.fc-timegrid-slot) {
+  background: var(--color-calendar-day);
+}
+
+.calendar-container :global(.fc-timegrid-slot-label) {
+  color: var(--color-text-primary);
+  font-size: 12px;
+}
+
+.calendar-container :global(.fc-timegrid-axis) {
+  background: var(--color-calendar-day);
+}
+
+.calendar-container :global(.fc-timegrid-col) {
+  background: var(--color-calendar-day);
+}
+
+/* Scrollbars for calendar */
+.calendar-container :global(.fc-scroller) {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-text-muted) var(--color-calendar-day);
+}
+
+.calendar-container :global(.fc-scroller::-webkit-scrollbar) {
+  width: 8px;
+}
+
+.calendar-container :global(.fc-scroller::-webkit-scrollbar-track) {
+  background: var(--color-calendar-day);
+}
+
+.calendar-container :global(.fc-scroller::-webkit-scrollbar-thumb) {
+  background: var(--color-text-muted);
+  border-radius: 4px;
+}
+
+.calendar-container :global(.fc-scroller::-webkit-scrollbar-thumb:hover) {
+  background: var(--color-text-secondary);
+}
+
+/* Event selection */
+.calendar-container :global(.fc-highlight) {
+  background: rgba(220, 255, 0, 0.2);
+}
+
+/* Light theme specific overrides */
+.light-theme .calendar-container :global(.fc-event) {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark theme specific overrides */
+.dark-theme .calendar-container :global(.fc-event) {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Modal backdrop animation */
+.fixed.inset-0 {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal content animation */
+.bg-themed-surface.border {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==================== NOTIFICATION STYLES ==================== */
+
+/* Notification Cards */
+.notification-card {
+  padding: 1rem;
+  border: 1px solid;
+  border-color: var(--color-border);
+  border-radius: 0.5rem;
+  background: rgba(var(--color-surface-rgb), 0.5);
+  backdrop-filter: blur(4px);
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.notification-card:hover {
+  background: rgba(var(--color-hover-rgb), 0.3);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Quick Add Buttons */
+.notification-quick-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  border-color: var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.notification-quick-btn:hover {
+  background: var(--color-hover);
+  border-color: rgba(var(--color-primary-rgb), 0.3);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+}
+
+.notification-quick-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* Custom Checkbox Styling */
+.notification-checkbox-wrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.notification-checkbox {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.notification-checkbox-label {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 0.25rem;
+  border: 2px solid;
+  border-color: var(--color-border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  background: var(--color-surface);
+}
+
+.notification-checkbox-label:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.5);
+}
+
+.notification-checkbox:checked + .notification-checkbox-label {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.notification-checkbox-icon {
+  color: #000000;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  width: 0.75rem;
+  height: 0.75rem;
+}
+
+.notification-checkbox:checked + .notification-checkbox-label .notification-checkbox-icon {
+  opacity: 1;
+}
+
+.notification-checkbox:disabled + .notification-checkbox-label {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Timing Dropdown Styling */
+.notification-timing-wrapper {
+  position: relative;
+}
+
+.notification-timing-select {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid;
+  border-color: var(--color-border);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  padding-right: 2rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  appearance: none;
+  cursor: pointer;
+  color: var(--color-text-primary);
+}
+
+.notification-timing-select.enabled {
+  color: var(--color-text-primary);
+  border-color: var(--color-border);
+}
+
+.notification-timing-select.disabled {
+  color: var(--color-text-muted);
+  border-color: rgba(var(--color-border-rgb), 0.5);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.notification-timing-select:hover:not(.disabled) {
+  border-color: rgba(var(--color-primary-rgb), 0.3);
+}
+
+.notification-timing-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+  border-color: var(--color-primary);
+}
+
+.notification-select-arrow {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.notification-timing-select:focus + .notification-select-arrow {
+  color: var(--color-primary);
+}
+
+/* Delete Button */
+.notification-delete-btn {
+  padding: 0.5rem;
+  color: var(--color-text-muted);
+  transition: all 0.2s ease;
+  border-radius: 0.375rem;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.notification-delete-btn:hover {
+  color: var(--color-danger);
+  background: rgba(var(--color-danger-rgb), 0.1);
+  transform: scale(1.05);
+}
+
+.notification-delete-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--color-danger-rgb), 0.2);
+}
+
+/* Add More Button */
+.notification-add-more-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  margin-top: 0.5rem;
+  border: 2px dashed;
+  border-color: var(--color-border);
+  border-radius: 0.5rem;
+  color: var(--color-text-muted);
+  transition: all 0.2s ease;
+  background: transparent;
+  cursor: pointer;
+}
+
+.notification-add-more-btn:hover {
+  color: var(--color-primary);
+  border-color: rgba(var(--color-primary-rgb), 0.5);
+  background: rgba(var(--color-primary-rgb), 0.05);
+  transform: translateY(-1px);
+}
+
+.notification-add-more-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .notification-card {
+    padding: 0.75rem;
+  }
+  
+  .notification-quick-btn {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
+  
+  .notification-timing-select {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    padding-right: 2rem;
+  }
+}
+
+/* ==================== DATE & TIME STYLES ==================== */
+
+/* Date Input Styling */
+.date-input-wrapper {
+  position: relative;
+}
+
+.date-input-container {
+  position: relative;
+}
+
+.date-input {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid;
+  border-color: var(--color-border);
+  border-radius: 0.5rem;
+  padding: 0.75rem 3rem 0.75rem 1rem;
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+}
+
+/* Position browser's native date picker icon behind our custom icon */
+.date-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  cursor: pointer;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.date-input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+.date-input:hover {
+  border-color: rgba(var(--color-primary-rgb), 0.3);
+}
+
+.date-input-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+/* All Day Toggle Styling */
+.all-day-toggle-wrapper {
+  position: relative;
+}
+
+.all-day-toggle {
+  position: relative;
+}
+
+.all-day-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.all-day-toggle-label {
+  position: relative;
+  display: inline-block;
+  width: 3rem;
+  height: 1.5rem;
+  background: var(--color-border);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.all-day-toggle-slider {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 1.25rem;
+  height: 1.25rem;
+  background: #ffffff;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.all-day-checkbox:checked + .all-day-toggle-label {
+  background: var(--color-primary);
+}
+
+.all-day-checkbox:checked + .all-day-toggle-label .all-day-toggle-slider {
+  transform: translateX(1.5rem);
+  background: #000000;
+}
+
+.all-day-toggle-label:hover {
+  opacity: 0.9;
+}
+
+/* Time Input Cards */
+.time-input-card {
+  background: var(--color-surface);
+  border: 1px solid;
+  border-color: var(--color-border);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  transition: all 0.2s ease;
+}
+
+.time-input-card:hover {
+  border-color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.1);
+}
+
+.time-input-card.start-time:hover {
+  border-color: #10b981;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.1);
+}
+
+.time-input-card.end-time:hover {
+  border-color: #ef4444;
+  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.1);
+}
+
+.time-input-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.start-time .time-input-header {
+  color: #10b981;
+}
+
+.end-time .time-input-header {
+  color: #ef4444;
+}
+
+.time-input-wrapper {
+  position: relative;
+}
+
+.time-input {
+  width: 100%;
+  background: var(--color-surface);
+  border: 1px solid;
+  border-color: var(--color-border);
+  border-radius: 0.375rem;
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+}
+
+.time-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.time-input-icon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.time-input-icon:hover {
+  color: var(--color-primary);
+}
+
+/* Position browser's native time picker icon behind our custom icon */
+.time-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  cursor: pointer;
+  width: 1rem;
+  height: 1rem;
+}
+
+.time-input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.time-input::-webkit-outer-spin-button {
+  display: none;
+}
+
+/* Duration Display */
+.duration-display {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 0.5rem;
+  border-left: 4px solid #10b981;
+}
+
+/* Responsive Design for Date & Time */
+@media (max-width: 768px) {
+  .time-input-card {
+    padding: 0.75rem;
+  }
+  
+  .time-input-header {
+    margin-bottom: 0.5rem;
+  }
+  
+  .date-input, .time-input {
+    font-size: 0.875rem;
+  }
+  
+  .all-day-toggle-label {
+    width: 2.5rem;
+    height: 1.25rem;
+  }
+  
+  .all-day-toggle-slider {
+    width: 1rem;
+    height: 1rem;
+  }
+  
+  .all-day-checkbox:checked + .all-day-toggle-label .all-day-toggle-slider {
+    transform: translateX(1.25rem);
+  }
+}
+
+/* Recurrence card styles */
+.recurrence-card {
+  @apply p-3 border rounded-lg transition-all duration-200 hover:shadow-md;
+  border-color: var(--color-border);
+  background: var(--color-surface);
+}
+
+.recurrence-card.selected {
+  border-color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.recurrence-card:hover {
+  @apply transform translate-y-[-1px];
+  border-color: rgba(var(--color-primary-rgb), 0.5);
+}
+
+/* Day selector button styles */
+.day-selector-btn {
+  @apply p-3 border rounded-lg transition-all duration-200 hover:shadow-md;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-color: var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
+}
+
+.day-selector-btn.selected {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #000000;
+  box-shadow: 0 4px 12px rgba(var(--color-primary-rgb), 0.4);
+}
+
+.day-selector-btn:hover {
+  @apply transform translate-y-[-1px];
+  border-color: rgba(var(--color-primary-rgb), 0.5);
+  background: var(--color-primary);
+  color: #000000;
+}
+
+.day-selector-btn.selected .text-themed-primary,
+.day-selector-btn.selected .text-themed-muted {
+  color: #000000 !important;
+}
+
+.day-selector-btn.selected:hover {
+  background: rgba(var(--color-primary-rgb), 0.9);
+}
+
+/* Time Validation Styles */
+.time-input.error {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.time-input.error:focus {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+.validation-error {
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 0.5rem;
+  border-left: 4px solid #ef4444;
+}
+
+.validation-warning {
+  padding: 1rem;
+  background: rgba(251, 146, 60, 0.05);
+  border: 1px solid rgba(251, 146, 60, 0.2);
+  border-radius: 0.5rem;
+  border-left: 4px solid #f59e0b;
+}
+
+.helpful-suggestion {
+  padding: 0.75rem 1rem;
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 0.5rem;
+  border-left: 3px solid var(--color-primary);
+}
+
+.quick-duration-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+}
+
+.quick-duration-btn {
+  padding: 0.375rem 0.75rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.quick-duration-btn:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.quick-duration-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.quick-duration-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Animation for validation messages */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.validation-error,
+.validation-warning,
+.helpful-suggestion {
+  animation: slideDown 0.3s ease-out;
+}
+
+/* Responsive adjustments for validation elements */
+@media (max-width: 640px) {
+  .validation-error,
+  .validation-warning,
+  .helpful-suggestion {
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+  
+  .quick-duration-buttons {
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    padding: 0.5rem;
+  }
+  
+  .quick-duration-btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.6875rem;
+  }
+}
+
+/* Collapsible Section Styles */
+.collapsible-section-header {
+  transition: all 0.2s ease;
+}
+
+.collapsible-section-header:hover {
+  background: var(--color-hover);
+}
+
+.collapsible-section-content {
+  animation: slideDown 0.3s ease-out;
+  overflow: hidden;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+    transform: translateY(0);
+  }
+}
+
+/* Chevron rotation animation */
+.rotate-180 {
+  transform: rotate(180deg);
+} 

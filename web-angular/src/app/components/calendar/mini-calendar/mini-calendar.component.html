@@ -1,0 +1,52 @@
+<!-- Mini Calendar -->
+<div class="mini-calendar">
+  <!-- Header -->
+  <div class="flex items-center justify-between mb-3">
+    <button 
+      (click)="previousMonth()"
+      class="p-1 rounded hover:bg-themed-hover transition-colors">
+      <svg class="w-4 h-4 text-themed-muted" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+      </svg>
+    </button>
+    
+    <h3 class="text-sm font-medium text-themed-primary">{{ monthYear }}</h3>
+    
+    <button 
+      (click)="nextMonth()"
+      class="p-1 rounded hover:bg-themed-hover transition-colors">
+      <svg class="w-4 h-4 text-themed-muted" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Weekday Headers -->
+  <div class="grid grid-cols-7 gap-1 mb-2">
+    <div *ngFor="let day of weekDays" 
+         class="text-center text-xs font-medium text-themed-muted py-1">
+      {{ day }}
+    </div>
+  </div>
+
+  <!-- Calendar Grid -->
+  <div class="grid grid-cols-7 gap-1">
+    <button
+      *ngFor="let date of miniCalendarDates"
+      type="button"
+      (click)="selectDate(date.date)"
+      class="mini-date-btn"
+      [class.today]="date.isToday"
+      [class.selected]="date.isSelected"
+      [class.other-month]="!date.isCurrentMonth"
+      [title]="date.hasEvents ? date.eventCount + ' event(s)' : ''">
+      
+      <span class="relative">
+        {{ date.day }}
+        <!-- Event indicator -->
+        <span *ngIf="date.hasEvents" 
+              class="absolute -top-1 -right-1 w-2 h-2 bg-purple-500 rounded-full"></span>
+      </span>
+    </button>
+  </div>
+</div> 

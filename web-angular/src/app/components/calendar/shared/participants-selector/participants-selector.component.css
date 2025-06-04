@@ -1,0 +1,31 @@
+/* Collapsible Section Styles */
+.collapsible-section-header {
+  transition: all 0.2s ease;
+}
+
+.collapsible-section-header:hover {
+  background: var(--color-hover);
+}
+
+.collapsible-section-content {
+  animation: slideDown 0.3s ease-out;
+  overflow: hidden;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+    transform: translateY(0);
+  }
+}
+
+/* Chevron rotation animation */
+.rotate-180 {
+  transform: rotate(180deg);
+} 

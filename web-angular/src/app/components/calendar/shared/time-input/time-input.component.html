@@ -1,0 +1,75 @@
+<div class="time-input-card" [class.start-time]="type === 'start'" [class.end-time]="type === 'end'">
+  <!-- Header -->
+  <div class="time-input-header">
+    <span>{{ icon }}</span>
+    <span>{{ label }}</span>
+  </div>
+  
+  <!-- Time Input -->
+  <div class="time-input-wrapper">
+    <input 
+      type="time"
+      class="time-input"
+      [class.error]="hasNegativeDuration()"
+      [(ngModel)]="value"
+      [placeholder]="placeholder"
+      [disabled]="disabled"
+      (input)="onTimeChange()"
+      (blur)="onBlur()"
+      autocomplete="off">
+    
+    <!-- Time Icon -->
+    <div class="time-input-icon">
+      <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+      </svg>
+    </div>
+  </div>
+  
+  <!-- Quick Duration Buttons (for end time) -->
+  <div *ngIf="type === 'end' && value" class="quick-duration-buttons">
+    <span class="text-xs text-themed-muted">Quick extend:</span>
+    <button 
+      type="button"
+      class="quick-duration-btn"
+      (click)="extendDuration(15)">
+      +15m
+    </button>
+    <button 
+      type="button"
+      class="quick-duration-btn"
+      (click)="extendDuration(30)">
+      +30m
+    </button>
+    <button 
+      type="button"
+      class="quick-duration-btn"
+      (click)="extendDuration(60)">
+      +1h
+    </button>
+  </div>
+</div>
+
+<!-- Duration Display -->
+<div *ngIf="showDuration && startTime && endTime && isValidTimeRange()" class="duration-display">
+  <div class="flex items-center space-x-2">
+    <svg class="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+    </svg>
+    <span class="text-sm font-medium text-green-600">
+      Duration: {{ calculateDuration(startTime, endTime) }}
+    </span>
+  </div>
+</div>
+
+<!-- Validation Error -->
+<div *ngIf="hasNegativeDuration()" class="validation-error">
+  <div class="flex items-center space-x-2">
+    <svg class="w-4 h-4 text-red-600" fill="currentColor" viewBox="0 0 20 20">
+      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+    </svg>
+    <span class="text-sm font-medium text-red-600">
+      End time must be after start time
+    </span>
+  </div>
+</div> 
