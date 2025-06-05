@@ -2,6 +2,10 @@
 
 A comprehensive calendar and event management application built with modern web technologies. This project serves as both a functional application and an educational resource demonstrating best practices in full-stack development.
 
+## 🌐 **Live Demo**
+
+**[🚀 Try the Live Demo](https://fivex-schedular.web.app/)** - Experience all features in action!
+
 ## 🎯 **Why This Project is Different** 
 
 ### 🚀 **No Package Hunting, No Complex Dependencies!**
@@ -19,6 +23,8 @@ Tired of scouring the internet for the "perfect" scheduling library only to find
 ✅ **Vanilla TypeScript/Angular** - No mysterious black boxes  
 ✅ **Educational comments** - Learn while you build  
 ✅ **Production-ready** - Deploy anywhere, anytime  
+
+*Built with ❤️ by [Fivex Labs](https://fivexlabs.com) - We believe in sharing knowledge and empowering developers. Because when we share, we all grow stronger together.*  
 
 ### 🎓 **Educational Gold Mine**
 
